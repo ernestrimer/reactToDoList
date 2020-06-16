@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+class App extends Component {
+  state = { todos: [
+    { id: 1, todosName: 'Learn Rails', complete: true },
+    { id: 2, todosName: 'Learn ReactJS', complete: false },
+    { id: 3, todosName: 'Graduate', complete: false },
+  ]}
+  
+  allTodos = () => {
+    const { todos } = this.state
+    return todos.map( t => {
+      return (
+        <li key={t.id}>{t.todosName}</li>
+      )
+    })
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  }
+  
+  render() {
+    return(
+      <div>
+        <ul>
+
+          {this.allTodos()}
+        </ul>
+      </div>
+    )
+  }
 }
-
 export default App;
